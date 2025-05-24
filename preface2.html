@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Continued</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="preface-container">
+    <img src="https://raw.githubusercontent.com/n10man/Proj2/refs/heads/main/info1bg.png" alt="Cale's Dragons" class="preface-logo">
+    <h1>Hello and welcome Marija :D</h1>
+    <div class="preface-message centered">
+      As I said this website and the letters mainly consist of reasons and reassurances as to how much I still do love you and care for you, regardless of what has happened between us. Also hope you like the idea of a dedicated webpage and the other gifts in the package and that they are better than what you expected to get, all this has been on my mind ever since you showed slight interest in me so around 4 years ago? I thought of making such a good gift which I myself would be surprised that I did and everything from this website to every single gift in the package is something which I cherish and hold deeply and wish to give it to you :D I literally put my heart and soul into the making of all this and wish you get as much joy and happiness, the same way I did knowing it's all going to someone I truly love :D <3
+
+<br>
+<br>
+
+      <p>PS, I love you Marija :)</p>  </div>
+    <div class="buttons">
+      <button id="back-main" onclick="window.location.href='index.html'">Back to Main Screen</button>
+      <button id="go-back" onclick="window.location.href='javascript:history.back()'">Go Back</button>
+    </div>
+  </div>
+  <div id="fade-overlay"></div>
+  <script>
+    function fadeNavigate(url) {
+      document.body.classList.add('fade-out');
+      setTimeout(function() {
+        window.location.href = url;
+      }, 700);
+    }
+    document.getElementById('back-main').addEventListener('click', function(e) {
+      e.preventDefault();
+      fadeNavigate('index.html');
+    });
+    document.getElementById('go-back').addEventListener('click', function(e) {
+      e.preventDefault();
+      fadeNavigate(document.referrer || 'index.html');
+    });
+  </script>
+</body>
+</html> 

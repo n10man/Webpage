@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letters Vault</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="letters-vault-container" style="opacity:0; animation: prefaceFadeIn 1.1s cubic-bezier(.5,1.6,.4,1) 0.1s forwards;">
+        <img src="https://raw.githubusercontent.com/n10man/Proj2/refs/heads/main/letters1.png" alt="Letters Vault" class="letters-vault-img">
+        <h1 class="letters-vault-title">Marija's Letters c:</h1>
+        <p class="letters-vault-desc">I thought I'd put all the letters I've written for you here, incase you'd like to read them again at anytime, and a place for them to hopefully never be lost. I also hope you liked the gift :D</p>
+        <div class="letters-grid">
+            <div class="letter-card">Letter 1</div>
+            <div class="letter-card">Letter 2</div>
+            <div class="letter-card">Letter 3</div>
+            <div class="letter-card">Letter 4</div>
+            <div class="letter-card">Letter 5</div>
+        </div>
+        <button class="back-home-btn" id="back-home-btn">Back to Home</button>
+    </div>
+    <div id="fade-overlay"></div>
+    <script>
+      document.getElementById('back-home-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(function() {
+          window.location.href = 'index.html';
+        }, 700);
+      });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Character Scene</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+20&family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <style>
+    /* Fade-in on page load */
+body.fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Bounce animation */
+/* Bounce animation */
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-20px); }
+  60%  { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+.character-container img.bounce {
+  animation: bounce 0.6s ease;
+}
+
+.character-container img.bounce {
+  animation: bounce 0.6s ease;
+}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f4dd;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      font-family: 'Courier New', monospace;
+    }
+
+    .character-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 65vh;
+    }
+
+    .character-container img {
+      height: 100%; /* Enlarged image */
+      width: 100%;
+      object-fit: contain;
+    }
+
+    .text-box {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 35vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #8b4513;
+      padding: 30px;
+      font-size: 22px;
+      font-family: 'Jersey 20', monospace;
+      display: flex;
+      align-items: flex-start;
+      justify-content: start;
+    }
+
+    #typewriter {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body class="fade-in">
+
+
+
+  <div class="character-container">
+    <img src="removedbg.png" alt="Character" />
+  </div>
+
+  <div class="text-box">
+    <span id="typewriter"></span>
+  </div>
+<script>
+  const textArray = [
+    "First of all, HAPPY BIRTHDAY Y!! 🎉\n\nI hope this brings a smile to your face 🧡",
+    "You’ve been such a kind and bright person, just like the sun on a cloudy day ☀️",
+    "So take this small gift from me, and know you're appreciated more than words can say 🌷"
+  ];
+
+  let i = 0;
+  let currentIndex = 0;
+
+  const typewriterEl = document.getElementById('typewriter');
+  const characterImg = document.querySelector('.character-container img');
+
+  function typeWriterEffect(text) {
+    i = 0;
+    typewriterEl.textContent = '';
+    function type() {
+      if (i <= text.length) {
+        typewriterEl.textContent = text.slice(0, i);
+        i++;
+        setTimeout(type, 35);
+      }
+    }
+    type();
+  }
+
+  function bounceImage() {
+    characterImg.classList.remove('bounce');
+    void characterImg.offsetWidth; // reflow trick
+    characterImg.classList.add('bounce');
+  }
+
+  function showCurrentText() {
+    typeWriterEffect(textArray[currentIndex]);
+    bounceImage();
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" && currentIndex < textArray.length - 1) {
+      currentIndex++;
+      showCurrentText();
+    } else if (e.key === "ArrowLeft" && currentIndex > 0) {
+      currentIndex--;
+      showCurrentText();
+    }
+  });
+
+  // On load, show first text (no bounce)
+  window.addEventListener("DOMContentLoaded", () => {
+    typeWriterEffect(textArray[currentIndex]);
+  });
+</script>
+
+
+
+</body>
+</html>
